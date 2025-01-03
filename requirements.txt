@@ -1,9 +1,9 @@
 joblib
 pandas
-numpy
+numpy==1.24.2
 streamlit
 flask
 pyngrok
-render_template
 request
 jsonify
+pip==24.3.1
