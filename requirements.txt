@@ -1,3 +1,5 @@
+distutils
+setuptools
 joblib
 pandas
 numpy==1.24.2
