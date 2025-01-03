@@ -266,9 +266,10 @@ import joblib
 import numpy as np
 import streamlit as st
 
-# Load the model
+# Memuat model yang telah disimpan
 model = joblib.load('random_forest_model.pkl')
 
+# Fungsi untuk memprediksi penyakit hati
 def predict_liver_disease(age, gender, total_bilirubin, direct_bilirubin, alkaline_phosphotase,
                           alamine_aminotransferase, aspartate_aminotransferase, total_protiens,
                           albumin, albumin_and_globulin_ratio):
@@ -278,11 +279,12 @@ def predict_liver_disease(age, gender, total_bilirubin, direct_bilirubin, alkali
     prediction = model.predict(input_data)
     return "Positive" if prediction[0] == 1 else "Negative"
 
-# Streamlit app
-st.title('Liver Disease Prediction')
+# Aplikasi Streamlit
+st.title('Prediksi Penyakit Hati')
 
-age = st.number_input('Masukkan umur (Age)')
-gender = st.radio('Masukkan jenis kelamin (Gender)', [0, 1], format_func=lambda x: 'Female' if x == 0 else 'Male')
+# Inputan dari pengguna
+age = st.number_input('Masukkan umur (Age)', min_value=0)
+gender = st.radio('Masukkan jenis kelamin (Gender)', [0, 1], format_func=lambda x: 'Perempuan' if x == 0 else 'Laki-laki')
 total_bilirubin = st.number_input('Masukkan Total Bilirubin')
 direct_bilirubin = st.number_input('Masukkan Direct Bilirubin')
 alkaline_phosphotase = st.number_input('Masukkan Alkaline Phosphotase')
@@ -292,11 +294,13 @@ total_protiens = st.number_input('Masukkan Total Proteins')
 albumin = st.number_input('Masukkan Albumin')
 albumin_and_globulin_ratio = st.number_input('Masukkan Albumin and Globulin Ratio')
 
-if st.button('Predict'):
+# Tombol untuk melakukan prediksi
+if st.button('Prediksi'):
     result = predict_liver_disease(age, gender, total_bilirubin, direct_bilirubin, alkaline_phosphotase,
                                    alamine_aminotransferase, aspartate_aminotransferase, total_protiens,
                                    albumin, albumin_and_globulin_ratio)
-    st.write(f'The result is: {result}')
+    st.write(f'Hasil Prediksi: {result}')
+
 
 
 # from flask import Flask, render_template, request, jsonify
