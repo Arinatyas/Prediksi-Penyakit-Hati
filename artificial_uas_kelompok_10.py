@@ -261,15 +261,14 @@ output_df.to_csv('hasil_test.csv', index=False)
 import joblib
 
 joblib.dump(rf, 'random_forest_model.pkl')
-
 import joblib
 import numpy as np
 import streamlit as st
 
-# Memuat model yang telah disimpan
+# ✅ Memuat model Random Forest yang sudah disimpan
 model = joblib.load('random_forest_model.pkl')
 
-# Fungsi untuk memprediksi penyakit hati
+# ✅ Fungsi untuk memprediksi penyakit hati
 def predict_liver_disease(age, gender, total_bilirubin, direct_bilirubin, alkaline_phosphotase,
                           alamine_aminotransferase, aspartate_aminotransferase, total_protiens,
                           albumin, albumin_and_globulin_ratio):
@@ -279,10 +278,10 @@ def predict_liver_disease(age, gender, total_bilirubin, direct_bilirubin, alkali
     prediction = model.predict(input_data)
     return "Positive" if prediction[0] == 1 else "Negative"
 
-# Aplikasi Streamlit
+# ✅ Aplikasi Streamlit
 st.title('Prediksi Penyakit Hati')
 
-# Inputan dari pengguna
+# 🔹 Inputan dari pengguna
 age = st.number_input('Masukkan umur (Age)', min_value=0)
 gender = st.radio('Masukkan jenis kelamin (Gender)', [0, 1], format_func=lambda x: 'Perempuan' if x == 0 else 'Laki-laki')
 total_bilirubin = st.number_input('Masukkan Total Bilirubin')
@@ -294,12 +293,13 @@ total_protiens = st.number_input('Masukkan Total Proteins')
 albumin = st.number_input('Masukkan Albumin')
 albumin_and_globulin_ratio = st.number_input('Masukkan Albumin and Globulin Ratio')
 
-# Tombol untuk melakukan prediksi
+# 🔹 Tombol untuk melakukan prediksi
 if st.button('Prediksi'):
     result = predict_liver_disease(age, gender, total_bilirubin, direct_bilirubin, alkaline_phosphotase,
                                    alamine_aminotransferase, aspartate_aminotransferase, total_protiens,
                                    albumin, albumin_and_globulin_ratio)
-    st.write(f'Hasil Prediksi: {result}')
+    st.write(f'**Hasil Prediksi:** {result}')
+
 
 
 
