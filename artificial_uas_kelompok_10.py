@@ -11,7 +11,7 @@ Original file is located at
 import pandas as pd
 
 df = pd.read_csv("https://raw.githubusercontent.com/Arinatyas/bismillah/refs/heads/main/indian_liver_patient.csv", encoding="utf-8")
-df
+# df
 
 df.info()
 
@@ -253,8 +253,8 @@ column_names = [
     "Alkaline_Phosphotase", "Alamine_Aminotransferase", "Aspartate_Aminotransferase",
     "Total_Protiens", "Albumin", "Albumin_and_Globulin_Ratio", "predicted"
 ]
-output_df = pd.DataFrame(X_test_with_predictions, columns=column_names)
-output_df.to_csv('hasil_test.csv', index=False)
+# output_df = pd.DataFrame(X_test_with_predictions, columns=column_names)
+# output_df.to_csv('hasil_test.csv', index=False)
 
 """**DEPLOYMENT**"""
 
@@ -299,79 +299,3 @@ if st.button('Prediksi'):
                                    alamine_aminotransferase, aspartate_aminotransferase, total_protiens,
                                    albumin, albumin_and_globulin_ratio)
     st.write(f'**Hasil Prediksi:** {result}')
-
-
-
-
-# from flask import Flask, render_template, request, jsonify
-# import joblib
-# import numpy as np
-
-# app = Flask(__name__)
-
-# model = joblib.load('random_forest_model.pkl')
-
-# @app.route('/')
-# def index():
-#     return '''
-#     <html>
-#     <head><title>Liver Disease Prediction</title></head>
-#     <body>
-#         <h1>Liver Disease Prediction</h1>
-#         <form action="/predict" method="POST">
-#             <label for="age">Age:</label>
-#             <input type="text" id="age" name="age" required><br><br>
-#             <label for="gender">Gender (0 = Female, 1 = Male):</label>
-#             <input type="text" id="gender" name="gender" required><br><br>
-#             <label for="total_bilirubin">Total Bilirubin:</label>
-#             <input type="text" id="total_bilirubin" name="total_bilirubin" required><br><br>
-#             <label for="direct_bilirubin">Direct Bilirubin:</label>
-#             <input type="text" id="direct_bilirubin" name="direct_bilirubin" required><br><br>
-#             <label for="alkaline_phosphotase">Alkaline Phosphotase:</label>
-#             <input type="text" id="alkaline_phosphotase" name="alkaline_phosphotase" required><br><br>
-#             <label for="alamine_aminotransferase">Alamine Aminotransferase:</label>
-#             <input type="text" id="alamine_aminotransferase" name="alamine_aminotransferase" required><br><br>
-#             <label for="aspartate_aminotransferase">Aspartate Aminotransferase:</label>
-#             <input type="text" id="aspartate_aminotransferase" name="aspartate_aminotransferase" required><br><br>
-#             <label for="total_protiens">Total Proteins:</label>
-#             <input type="text" id="total_protiens" name="total_protiens" required><br><br>
-#             <label for="albumin">Albumin:</label>
-#             <input type="text" id="albumin" name="albumin" required><br><br>
-#             <label for="albumin_and_globulin_ratio">Albumin and Globulin Ratio:</label>
-#             <input type="text" id="albumin_and_globulin_ratio" name="albumin_and_globulin_ratio" required><br><br>
-#             <input type="submit" value="Predict">
-#         </form>
-#     </body>
-#     </html>
-#     '''
-
-# @app.route('/predict', methods=['POST'])
-# def predict():
-#     try:
-#         age = int(request.form['age'])
-#         gender = int(request.form['gender'])
-#         total_bilirubin = float(request.form['total_bilirubin'])
-#         direct_bilirubin = float(request.form['direct_bilirubin'])
-#         alkaline_phosphotase = float(request.form['alkaline_phosphotase'])
-#         alamine_aminotransferase = float(request.form['alamine_aminotransferase'])
-#         aspartate_aminotransferase = float(request.form['aspartate_aminotransferase'])
-#         total_protiens = float(request.form['total_protiens'])
-#         albumin = float(request.form['albumin'])
-#         albumin_and_globulin_ratio = float(request.form['albumin_and_globulin_ratio'])
-
-#         input_data = np.array([[age, gender, total_bilirubin, direct_bilirubin, alkaline_phosphotase,
-#                                alamine_aminotransferase, aspartate_aminotransferase, total_protiens,
-#                                albumin, albumin_and_globulin_ratio]])
-
-#         prediction = model.predict(input_data)
-
-#         result = "Positive" if prediction[0] == 1 else "Negative"
-#         return f'<h1>The result is: {result}</h1><a href="/">Go back</a>'
-
-#     except ValueError:
-#         return "Invalid input. Please enter valid numbers."
-
-# public_url = ngrok.connect(5000)
-# print(f" * Ngrok tunnel \"{public_url}\" -> http://127.0.0.1:5000")
-
-# app.run(port=5000)
