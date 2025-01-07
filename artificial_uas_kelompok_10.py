@@ -18,9 +18,9 @@ df.info()
 """**CLEANING DATA**"""
 
 df['Gender'] = df['Gender'].apply(lambda x: 1 if x == 'Male' else 0)
-df
+# df
 
-df.isnull().sum()
+# df.isnull().sum()
 
 columns_with_null = df.columns[df.isnull().any()].tolist()
 
@@ -30,16 +30,16 @@ for col in columns_with_null:
     else:
         print(f"Column '{col}' is not numeric and will not be processed for mean fill.")
 
-print(df.isnull().sum())
+# print(df.isnull().sum())
 
 df['Dataset'] = df['Dataset'].apply(lambda x: 1 if x == 1 else 0)
-df
+# df
 
-df.duplicated()
+# df.duplicated()
 
-df.drop_duplicates(inplace=True)
+# df.drop_duplicates(inplace=True)
 
-df.duplicated()
+# df.duplicated()
 
 # output_csv_file = 'cleaned_data.csv'
 # df.to_csv(output_csv_file, index=False)
