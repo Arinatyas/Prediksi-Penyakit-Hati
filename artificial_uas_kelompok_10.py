@@ -41,8 +41,8 @@ df.drop_duplicates(inplace=True)
 
 df.duplicated()
 
-output_csv_file = 'cleaned_data.csv'
-df.to_csv(output_csv_file, index=False)
+# output_csv_file = 'cleaned_data.csv'
+# df.to_csv(output_csv_file, index=False)
 
 df = pd.read_csv('https://raw.githubusercontent.com/Arinatyas/bismillah/refs/heads/main/cleaned_data%20(1).csv')
 test_size = int(len(df) * 0.3)
@@ -53,13 +53,13 @@ X_train = df.iloc[:-test_size, :-1].values
 y_train = df.iloc[:-test_size, -1].values
 X_test = df.iloc[-test_size:, :-1].values
 
-# pd.DataFrame(X_train).to_csv('X_train.csv', index=False)
-# pd.DataFrame(y_train).to_csv('y_train.csv', index=False, header=["label"])
-# pd.DataFrame(X_test).to_csv('X_test.csv', index=False)
+pd.DataFrame(X_train).to_csv('X_train.csv', index=False)
+pd.DataFrame(y_train).to_csv('y_train.csv', index=False, header=["label"])
+pd.DataFrame(X_test).to_csv('X_test.csv', index=False)
 
-# print("Data X_train berhasil disimpan ke X_train.csv")
-# print("Data y_train berhasil disimpan ke y_train.csv")
-# print("Data X_test berhasil disimpan ke X_test.csv")
+print("Data X_train berhasil disimpan ke X_train.csv")
+print("Data y_train berhasil disimpan ke y_train.csv")
+print("Data X_test berhasil disimpan ke X_test.csv")
 
 """**MODEL RANDOM FOREST**"""
 
