@@ -257,7 +257,7 @@ column_names = [
 import joblib
 
 joblib.dump(rf, 'random_forest_model.pkl')
-# rf_loaded = joblib.load('random_forest_model.pkl')
+rf_loaded = joblib.load('random_forest_model.pkl')
 
 import streamlit as st
 
