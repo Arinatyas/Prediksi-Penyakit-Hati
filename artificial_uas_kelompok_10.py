@@ -256,9 +256,16 @@ column_names = [
 
 
 
-import joblib
+# import joblib
 
-joblib.dump(rf, 'random_forest_model.pkl')
+# joblib.dump(rf, 'random_forest_model.pkl')
+
+import cloudpickle
+
+# Simpan model menggunakan cloudpickle
+with open('random_forest_model.pkl', 'wb') as f:
+    cloudpickle.dump(rf, f)
+
 # rf_loaded = joblib.load('random_forest_model.pkl')
 
 # import streamlit as st
