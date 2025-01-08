@@ -1,9 +1,0 @@
-joblib
-pandas
-numpy
-streamlit
-flask
-pyngrok
-render_template
-request
-jsonify
