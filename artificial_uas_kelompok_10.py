@@ -254,7 +254,26 @@ column_names = [
 # output_df = pd.DataFrame(X_test_with_predictions, columns=column_names)
 # output_df.to_csv('hasil_test.csv', index=False)
 
+import os
+import joblib
 
+# Path untuk file model
+model_filename = 'random_forest_model.pkl'
+
+# Cek apakah file model lama ada, jika ada, hapus
+try:
+    if os.path.exists(model_filename):
+        os.remove(model_filename)
+        print(f"File model lama ({model_filename}) berhasil dihapus.")
+except Exception as e:
+    print(f"Terjadi kesalahan saat menghapus file lama: {e}")
+
+# Simpan model Random Forest
+try:
+    joblib.dump(rf, model_filename)
+    print(f"Model berhasil disimpan sebagai {model_filename}")
+except Exception as e:
+    print(f"Terjadi kesalahan saat menyimpan model: {e}")
 
 import joblib
 
