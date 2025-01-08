@@ -316,11 +316,19 @@ with open('random_forest_model.pkl', 'wb') as f:
 #     if st.button('Kembali ke Halaman Utama'):
 #         st.session_state.page = 'home'
 
+import cloudpickle
 import numpy as np
 import streamlit as st
 
 # ✅ Memuat model Random Forest yang sudah disimpan
-model = joblib.load('random_forest_model.pkl')
+with open('random_forest_model.pkl', 'rb') as f:
+    model = cloudpickle.load(f)
+
+# import numpy as np
+# import streamlit as st
+
+# # ✅ Memuat model Random Forest yang sudah disimpan
+# model = joblib.load('random_forest_model.pkl')
 
 # ✅ Fungsi untuk memprediksi penyakit hati
 def predict_liver_disease(age, gender, total_bilirubin, direct_bilirubin, alkaline_phosphotase,
